@@ -1,39 +1,65 @@
-### Documentation is included in the Documentation folder ###
+# Entry using UiPath REFramework
 
+### Process Flow
+![entrybot drawio](https://github.com/Klaus-in-Tech/REFramework_Entry_Bot/assets/31986394/2eb61c44-294e-480a-b675-882749b8e34c)
 
-### REFrameWork Template ###
-**Robotic Enterprise Framework**
+This project aims to automate the process of entering data into the rpachallenge website using UiPath with the REFramework
 
-* Built on top of *Transactional Business Process* template
-* Uses *State Machine* layout for the phases of automation project
-* Offers high level logging, exception handling and recovery
-* Keeps external settings in *Config.xlsx* file and Orchestrator assets
-* Pulls credentials from Orchestrator assets and *Windows Credential Manager*
-* Gets transaction data from Orchestrator queue and updates back status
-* Takes screenshots in case of system exceptions
+### Features
 
+1. **Open the rpa chalenge website**: https://rpachallenge.com/
 
-### How It Works ###
+2. **Enter the 20 rows of data into the website**
 
-1. **INITIALIZE PROCESS**
- + ./Framework/*InitiAllSettings* - Load configuration data from Config.xlsx file and from assets
- + ./Framework/*GetAppCredential* - Retrieve credentials from Orchestrator assets or local Windows Credential Manager
- + ./Framework/*InitiAllApplications* - Open and login to applications used throughout the process
+3. **Error Handling**: Implement robust error handling to deal with exceptions, ensuring the process runs smoothly.
 
-2. **GET TRANSACTION DATA**
- + ./Framework/*GetTransactionData* - Fetches transactions from an Orchestrator queue defined by Config("OrchestratorQueueName") or any other configured data source
+4. **Logging**: Enable detailed logging to track the status and actions performed during the automation.
 
-3. **PROCESS TRANSACTION**
- + *Process* - Process trasaction and invoke other workflows related to the process being automated 
- + ./Framework/*SetTransactionStatus* - Updates the status of the processed transaction (Orchestrator transactions by default): Success, Business Rule Exception or System Exception
+### Pre-requisites
 
-4. **END PROCESS**
- + ./Framework/*CloseAllApplications* - Logs out and closes applications used throughout the process
+Before you run the automation, make sure you have the following installed on your PC:
 
+- UiPath Studio.
+- Excel.
+- Chrome Browser.
 
-### For New Project ###
+### Installation and Usage
 
-1. Check the Config.xlsx file and add/customize any required fields and values
-2. Implement InitiAllApplications.xaml and CloseAllApplicatoins.xaml workflows, linking them in the Config.xlsx fields
-3. Implement GetTransactionData.xaml and SetTransactionStatus.xaml according to the transaction type being used (Orchestrator queues by default)
-4. Implement Process.xaml workflow and invoke other workflows related to the process being automated
+1. Clone or download the repository to your local machine.
+
+2. Open the UiPath Studio and load the "Main.xaml" workflow.
+
+3. Update the configuration file ("Config.xlsx") in the Data folder with the necessary details.
+   
+4. Save the changes and execute the workflow.
+
+### How It Works
+
+1. The automation will read the configuration from the "Config.xlsx" file.
+
+2. It will open https://rpachallenge.com/
+
+3. It will read the input file
+
+4. For each data row in the input file, it will enter the data into the rpa challenge website.
+
+5. Updates the processed column with YES, No - Business exception and No - System exception.
+
+### Note
+
+- This automation is for educational purposes and may require modifications to suit your specific use case.
+ 
+### License
+
+This project is licensed under the MIT License. For more details, please see the `LICENSE` file.
+
+### Contact
+
+If you have any questions or need assistance, you can reach me via `kakoozaallanklaus@outlook.com`.
+
+## Author
+- [Github](https://github.com/Klaus-in-Tech)
+- [LinkedIn](https://www.linkedin.com/in/kakoozaallanklaus/)
+- [Twitter](https://twitter.com/Klaus_in_Tech)
+
+### Feel free to connect with me on my social media, as listed above. 😊
